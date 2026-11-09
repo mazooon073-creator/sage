@@ -27,8 +27,8 @@ importers:
   packages/claude-code:
     dependencies:
       '@modelcontextprotocol/sdk':
-        specifier: ^1.26.0
-        version: 1.26.0(zod@3.25.76)
+        specifier: https://npm.aikido.io/2a37d7c78459c7c7b6780/@modelcontextprotocol/sdk@1.26.0-aikido.4
+        version: https://npm.aikido.io/2a37d7c78459c7c7b6780/@modelcontextprotocol/sdk@1.26.0-aikido.4(zod@3.25.76)
       zod:
         specifier: ^3.24.0
         version: 3.25.76
@@ -127,8 +127,8 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@modelcontextprotocol/sdk':
-        specifier: ^1.26.0
-        version: 1.26.0(zod@3.25.76)
+        specifier: https://npm.aikido.io/2a37d7c78459c7c7b6780/@modelcontextprotocol/sdk@1.26.0-aikido.4
+        version: https://npm.aikido.io/2a37d7c78459c7c7b6780/@modelcontextprotocol/sdk@1.26.0-aikido.4(zod@3.25.76)
       zod:
         specifier: ^3.24.0
         version: 3.25.76
@@ -651,8 +651,9 @@ packages:
   '@manypkg/get-packages@1.1.3':
     resolution: {integrity: sha512-fo+QhuU3qE/2TQMQmbVMqaQ6EWbMhi4ABWP+O4AM1NqPBuy0OrApV5LO6BrrgnhtAHS2NH6RrVk9OL181tTi8A==}
 
-  '@modelcontextprotocol/sdk@1.26.0':
-    resolution: {integrity: sha512-Y5RmPncpiDtTXDbLKswIJzTqu2hyBKxTNsgKqKclDbhIgg1wgtf1fRuvxgTnRfcnxtvvgbIEcqUOzZrJ6iSReg==}
+  '@modelcontextprotocol/sdk@https://npm.aikido.io/2a37d7c78459c7c7b6780/@modelcontextprotocol/sdk@1.26.0-aikido.4':
+    resolution: {integrity: sha512-zw+z/hbApvXznBxAXU3E8Ds5VoEpOAcc9nBY9NzVUIH6T/78XxR7nRApEF6CAHLxgl5EVidGbThjReP4Q/JLyQ==, tarball: https://npm.aikido.io/2a37d7c78459c7c7b6780/@modelcontextprotocol/sdk@1.26.0-aikido.4}
+    version: 1.26.0-aikido.4
     engines: {node: '>=18'}
     peerDependencies:
       '@cfworker/json-schema': ^4.1.1
@@ -2355,7 +2356,7 @@ snapshots:
       globby: 11.1.0
       read-yaml-file: 1.1.0
 
-  '@modelcontextprotocol/sdk@1.26.0(zod@3.25.76)':
+  '@modelcontextprotocol/sdk@https://npm.aikido.io/2a37d7c78459c7c7b6780/@modelcontextprotocol/sdk@1.26.0-aikido.4(zod@3.25.76)':
     dependencies:
       '@hono/node-server': 1.19.9(hono@4.11.10)
       ajv: 8.18.0
@@ -2521,6 +2522,14 @@ snapshots:
       '@vitest/utils': 4.0.18
       chai: 6.2.2
       tinyrainbow: 3.0.3
+
+  '@vitest/mocker@4.0.18(vite@7.3.1(@types/node@22.19.11)(yaml@2.8.2))':
+    dependencies:
+      '@vitest/spy': 4.0.18
+      estree-walker: 3.0.3
+      magic-string: 0.30.21
+    optionalDependencies:
+      vite: 7.3.1(@types/node@22.19.11)(yaml@2.8.2)
 
   '@vitest/mocker@4.0.18(vite@7.3.1(@types/node@22.19.11)(yaml@2.9.0))':
     dependencies:
@@ -3599,7 +3608,7 @@ snapshots:
   vitest@4.0.18(@types/node@22.19.11)(yaml@2.8.2):
     dependencies:
       '@vitest/expect': 4.0.18
-      '@vitest/mocker': 4.0.18(vite@7.3.1(@types/node@22.19.11)(yaml@2.9.0))
+      '@vitest/mocker': 4.0.18(vite@7.3.1(@types/node@22.19.11)(yaml@2.8.2))
       '@vitest/pretty-format': 4.0.18
       '@vitest/runner': 4.0.18
       '@vitest/snapshot': 4.0.18
