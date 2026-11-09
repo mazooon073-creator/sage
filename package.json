@@ -8,7 +8,10 @@
       "koffi",
       "msgpackr-extract",
       "onnxruntime-node"
-    ]
+    ],
+    "overrides": {
+      "zod@4": "4.6.0"
+    }
   },
   "engines": {
     "node": ">=18"
