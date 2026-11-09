@@ -22,18 +22,24 @@
 import { createHash, randomBytes } from "node:crypto";
 import { createWriteStream, statSync } from "node:fs";
 import { mkdir, mkdtemp, readFile, rename, rm, stat, unlink, writeFile } from "node:fs/promises";
-import { join, resolve } from "node:path";
+import { isAbsolute, join, relative, resolve, sep } from "node:path";
 import { Readable } from "node:stream";
 import { pipeline } from "node:stream/promises";
 import {
 	getDownloadStagingDir,
 	getModelDir,
+	getModelStorageRoot,
 	isModelPresent,
 	requiredModelFiles,
 } from "../model-storage.js";
 import type { Logger } from "../types.js";
 import { nullLogger } from "../types.js";
 import type { ModelManifestEntry } from "./model-manifest.js";
+
+const isPathInside = (baseDir: string, targetPath: string): boolean => {
+	const rel = relative(resolve(baseDir), resolve(targetPath));
+	return !(rel === ".." || rel.startsWith(`..${sep}`) || isAbsolute(rel));
+};
 
 const STALE_LOCK_MS = 60 * 60 * 1_000; // 1 h
 
@@ -69,6 +75,11 @@ export async function downloadModel(opts: DownloadModelOptions): Promise<boolean
 	const stagingDir = getDownloadStagingDir(sageDir);
 	const lockPath = `${modelDir}.lock`;
 
+	if (!isPathInside(getModelStorageRoot(sageDir), modelDir)) {
+		logger.warn("Invalid file path");
+		return false;
+	}
+
 	try {
 		await mkdir(stagingDir, { recursive: true });
 		await mkdir(resolve(modelDir, ".."), { recursive: true });
@@ -92,6 +103,11 @@ export async function downloadModel(opts: DownloadModelOptions): Promise<boolean
 		const suffix = randomBytes(6).toString("hex");
 		archivePath = join(stagingDir, `${modelName}.${suffix}.tar.gz`);
 		extractDir = join(stagingDir, `${modelName}.${suffix}.partial`);
+
+		if (!isPathInside(stagingDir, archivePath) || !isPathInside(stagingDir, extractDir)) {
+			logger.warn("Invalid file path");
+			return false;
+		}
 
 		await streamFetchToFile(entry.url, archivePath, opts.fetchImpl);
 
