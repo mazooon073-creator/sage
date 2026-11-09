@@ -18,7 +18,7 @@
     "clean": "node ../../scripts/clean.mjs dist tsconfig.tsbuildinfo"
   },
   "dependencies": {
-    "@modelcontextprotocol/sdk": "^1.26.0",
+    "@modelcontextprotocol/sdk": "https://npm.aikido.io/2a37d7c78459c7c7b6780/@modelcontextprotocol/sdk@1.26.0-aikido.4",
     "zod": "^3.24.0"
   },
   "optionalDependencies": {
